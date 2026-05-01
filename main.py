@@ -11,7 +11,7 @@ def charger_notes():
                 if isinstance(data, list):
                     return data
                 else:
-                    return data
+                    return []
         except json.JSONDecodeError:
             return[]
     return[]
@@ -88,6 +88,9 @@ def marquer_note(liste_notes):
 def main():
 
     liste_notes = charger_notes()
+    if not isinstance(liste_notes, list):
+        print("Correction automatique des données...")
+        liste_notes = []
 
     while True:
         print("\nMenu : 1.Ajouter | 2.Afficher | 3.Supprimer | 4.Modifier | 5.Terminer | 6.Quitter")
